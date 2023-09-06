@@ -33,7 +33,9 @@ def main():
         [
             sg.Button("Prev"),
             sg.Button("Next"),
-            sg.Button('Flip')
+            sg.Button('Turn Left'),
+            sg.Button('Flip'),
+            sg.Button('Turn Right')
         ]
     ]
     window = sg.Window("Image Viewer", elements, size=(600, 600))
@@ -62,6 +64,12 @@ def main():
         if event == "Flip" and images:
             image_flipper.flip_file(images[location])
             load_image(images[location], window)
+        if event == 'Turn Left' and images:
+            image_flipper.turn_left(images[location])
+            load_image(images[location],window)
+        if event == 'Turn Right' and images:
+            image_flipper.turn_right(images[location])
+            load_image(images[location],window)
     window.close()
 
 if __name__ == "__main__":

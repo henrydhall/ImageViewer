@@ -22,3 +22,37 @@ def flip_file(file_path):
     except:
         print('Could not flip file')
         return False
+    
+def turn_left(file_path):
+    '''
+    Turns an image file left 90 degrees.
+
+    param file_path: path to the file to turn.
+
+    returns bool. True if it works
+    '''
+    try:
+        with Image.open(file_path) as im:
+            im = im.transpose(2)
+            im.save(file_path)
+            return True
+    except:
+        print('Could not turn file')
+        return False
+    
+def turn_right(file_path):
+    '''
+    Turns an image file left 90 degrees.
+
+    param file_path: path to the file to turn.
+
+    returns bool. True if it works.
+    '''
+    try:
+        with Image.open(file_path) as im:
+            im = im.transpose(4)
+            im.save(file_path)
+            return True
+    except:
+        print('Could not turn file')
+        return False
