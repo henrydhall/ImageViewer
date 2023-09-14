@@ -35,7 +35,8 @@ def main():
             sg.Button("Next"),
             sg.Button('Turn Left'),
             sg.Button('Flip'),
-            sg.Button('Turn Right')
+            sg.Button('Turn Right'),
+            sg.Button('Correct Orientation')
         ]
     ]
     window = sg.Window("Image Viewer", elements, size=(600, 600))
@@ -70,7 +71,20 @@ def main():
         if event == 'Turn Right' and images:
             image_flipper.turn_right(images[location])
             load_image(images[location],window)
+        if event == 'Correct Orientation' and images:
+            image_flipper.correct_orientation(images[location])
+            load_image(images[location],window)
     window.close()
+
+# TODO: should I make a faster method? Should I flip groups? Is someone going to be mad I messed with permissions?
+# TODO: some are only kind of sideways, how do we account for that?
+# TODO: I can't figure out how to get rid of the kind of sidewaysness. I think it's due to containing
+# JPEGs with an annotation to turn, but can't tell.
+# Will it correct on FamilySearch? Or will it turn?
+
+# These kind of sideways ones will be correct if I turn and then turn....
+
+# AzBirth 1926/399 200 on is kind of sideways
 
 if __name__ == "__main__":
     main()
